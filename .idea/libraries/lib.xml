@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="jackson-annotations-2.2.3">
+  <library name="lib">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/jackson-annotations-2.2.3.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jackson-core-2.2.3.jar!/" />

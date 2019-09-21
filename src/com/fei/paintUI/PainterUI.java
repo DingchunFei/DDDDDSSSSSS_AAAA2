@@ -53,11 +53,11 @@ public class PainterUI extends JPanel {
         jp2.setPreferredSize(new Dimension(100, 700));
         jp2.setBackground(Color.LIGHT_GRAY);
         // 设置jp3
-        jp3.setPreferredSize(new Dimension(100, 700));
+        jp3.setPreferredSize(new Dimension(50, 700));
         jp3.setBackground(Color.LIGHT_GRAY);
 
         // 添加图形按钮
-        String[] shapeArray = { "Line", "Rectangle", "Oval", "Brush", "Rubber", "Clear" };
+        String[] shapeArray = { "Line",  "Brush","Rectangle","FillRect", "Oval","FillOval","Circle",  "Text", "Rubber" ,"Clear"};
         for (int i = 0; i < shapeArray.length; i++) {
             // 创建图形按钮
             JButton jbu1 = new JButton(shapeArray[i]);
@@ -70,12 +70,13 @@ public class PainterUI extends JPanel {
         }
 
         // 设置颜色按钮
-        Color[] colorArray = { Color.red, Color.pink, Color.orange, Color.yellow, Color.green, Color.blue, Color.cyan,
-                Color.black, Color.gray, Color.white };
+        Color[] colorArray = { Color.red, Color.pink, Color.orange, Color.yellow, new Color(176,247,13), Color.green, new Color(18,187,161),
+                Color.cyan, Color.blue, new Color(84,13,247) ,new Color(255,0,182), new Color(138,0,148) ,
+                Color.black, new Color(58,58,58), Color.gray, new Color(200,200,200), Color.white };
         for (int i = 0; i < colorArray.length; i++) {
             JButton jbu2 = new JButton();
             jbu2.setBackground(colorArray[i]);
-            jbu2.setPreferredSize(new Dimension(100, 40));
+            jbu2.setPreferredSize(new Dimension(50, 30));
             jp3.add(jbu2);
             jbu2.addActionListener(dl);
         }
@@ -110,7 +111,7 @@ public class PainterUI extends JPanel {
                     textArea.setText(file.getName()+":"+file.getPath()+"\n"+file.length());
                     readFile(file);*/
                     File file = chooser.getSelectedFile();
-                    com.fei.paintUI.shape.Shape[] shapes = IOUtil.readFile(file);
+                    Shape[] shapes = IOUtil.readFile(file);
                     dl.rebuild(shapes);
                 };
 
@@ -204,9 +205,8 @@ public class PainterUI extends JPanel {
     }
 
 
-/*    //主函数
     public static void main(String[] args) {
         PainterUI pui = new PainterUI();
         pui.initUI();
-    }*/
+    }
 }

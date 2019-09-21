@@ -19,7 +19,11 @@ import java.awt.Graphics;
         @JsonSubTypes.Type(value = Oval.class, name = "Oval"),
         @JsonSubTypes.Type(value = FillRect.class, name = "Clear"),
         @JsonSubTypes.Type(value = Eraser.class, name = "Rubber"),
-        @JsonSubTypes.Type(value = Line.class, name = "Brush")
+        @JsonSubTypes.Type(value = Line.class, name = "Brush"),
+        @JsonSubTypes.Type(value = Text.class, name = "Text"),
+        @JsonSubTypes.Type(value = FillRect.class, name = "FillRect"),
+        @JsonSubTypes.Type(value = Oval.class, name = "Circle"),
+        @JsonSubTypes.Type(value = FillOval.class, name = "FillOval")
 }
 )
 public abstract class Shape {
@@ -30,17 +34,20 @@ public abstract class Shape {
     public Integer red;
     public Integer green;
     public Integer blue;
+    public String text;
+
 
     public Shape() {
     };
 
-    public Shape(int x1, int y1, int x2, int y2, String name, Color color) {
+    public Shape(int x1, int y1, int x2, int y2, String name, Color color, String text) {
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
         this.name = name;
         this.color = color;
+        this.text = text;
     }
 
     public void setRGB(){
@@ -68,6 +75,10 @@ public abstract class Shape {
                 ", y2=" + y2 +
                 ", name='" + name + '\'' +
                 ", color=" + color +
+                ", red=" + red +
+                ", green=" + green +
+                ", blue=" + blue +
+                ", text='" + text + '\'' +
                 '}';
     }
 
@@ -144,5 +155,13 @@ public abstract class Shape {
 
     public void setBlue(Integer blue) {
         this.blue = blue;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }

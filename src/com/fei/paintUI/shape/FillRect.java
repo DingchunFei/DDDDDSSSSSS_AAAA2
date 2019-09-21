@@ -8,8 +8,8 @@ public class FillRect extends Shape {
     public FillRect() {
     };
 
-    public FillRect(int x1, int y1, int x2, int y2, String name, Color color) {
-        super(x1, y1, x2, y2, name, color);
+    public FillRect(int x1,int y1,int x2,int y2,String name,Color color,String text){
+        super(x1,y1,x2,y2,name,color,text);
     }
 
     public void drawShape(Graphics g) {

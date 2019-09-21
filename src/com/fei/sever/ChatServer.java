@@ -19,7 +19,7 @@ public class ChatServer {
     private List<Socket> sockets = new ArrayList<Socket>() ;    //类集的应用
     public ChatServer() throws IOException  {
         ServerSocket ss = new ServerSocket(8888) ;
-        System.out.println("服务器已在监听8888端口") ;
+        System.out.println("Server is listening the port : 8888") ;
 
         while(true)  {
             Socket socket = ss.accept() ;
@@ -65,9 +65,12 @@ class ServerRunner implements Runnable  {
                 //System.out.println(ip+"说"+str) ;
                 //往所有的客户端sockets写入信息
                 for(Socket temp : sockets)  {
-                    PrintWriter pw = new PrintWriter(new OutputStreamWriter(temp.getOutputStream())) ;
-                    pw.println(str) ;
-                    pw.flush();
+                    if(temp!=currentSocket){
+                        PrintWriter pw = new PrintWriter(new OutputStreamWriter(temp.getOutputStream())) ;
+                        pw.println(str) ;
+                        pw.flush();
+                    }
+
                 }
             }
         }catch(IOException e)  {
