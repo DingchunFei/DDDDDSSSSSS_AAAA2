@@ -58,12 +58,7 @@ class ServerRunner implements Runnable  {
             String str = null ;
             while((str = br.readLine()) != null)  {
 
-                //先设置只能发jsonstr，不能说废话
-                //获得shape
 
-
-                //System.out.println(ip+"说"+str) ;
-                //往所有的客户端sockets写入信息
                 for(Socket temp : sockets)  {
                     if(temp!=currentSocket){
                         PrintWriter pw = new PrintWriter(new OutputStreamWriter(temp.getOutputStream())) ;

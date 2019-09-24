@@ -32,6 +32,7 @@ public class ChatClient extends JFrame {
     private JTextArea sendArea ;        //消息编辑区域
     private JTextArea contentArea ;   //群聊消息显示框
     private String name ;                   //当前用户名称
+    private JTextArea userListArea ;   //群聊消息显示框
 
 
 
@@ -58,12 +59,12 @@ public class ChatClient extends JFrame {
     }
 
     public void init( )  {
-        this.setTitle("我的聊天室");
-        this.setSize(300,400);
+        this.setTitle("Chatting Room");
+        this.setSize(400,400);
         int x = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() ;
         int y = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() ;
 
-        this.setLocation( (x-this.getWidth() )/2, ( y-this.getHeight() )/2 );
+        this.setLocation( (x-this.getWidth() )*79/80, ( y-this.getHeight() )/2 );
         this.setResizable(false);      //不允许用户改变大小
 
         contentArea = new JTextArea() ;
@@ -83,15 +84,24 @@ public class ChatClient extends JFrame {
         splitpane.setDividerLocation(250);
         this.add(splitpane,BorderLayout.CENTER) ;
 
+        ////////////////////////////////////////////////////
+        userListArea = new JTextArea() ;
+        userListArea.setLineWrap(true);  //换行方法
+        JScrollPane userListPanel  = new JScrollPane(userListArea,
+                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER ) ;
+        this.add(userListPanel, BorderLayout.EAST);
+
+        ////////////////////////////////////////////////////
         //按钮面板
         JPanel bPanel  = new JPanel() ;
         bPanel.setLayout(new FlowLayout(FlowLayout.RIGHT)) ;
         this.add(bPanel,BorderLayout.SOUTH) ;
 
-        JLabel namelabel = new JLabel("昵称： "+this.name+"  ") ;
+        JLabel namelabel = new JLabel("Username: "+this.name+"  ") ;
         bPanel.add(namelabel) ;
 
-        JButton closeButton = new JButton("关闭") ;
+        JButton closeButton = new JButton("Close") ;
         closeButton.addActionListener( new ActionListener( )  {
             public void actionPerformed(ActionEvent e)  {
 
@@ -99,20 +109,28 @@ public class ChatClient extends JFrame {
         });
         bPanel.add(closeButton) ;
 
-        JButton sendButton = new JButton("发送") ;
+        JButton sendButton = new JButton("Send") ;
 
         sendButton.addActionListener(new ActionListener() {
-            //@Override
+            @Override
             public void actionPerformed(ActionEvent arg0) {
                 // TODO Auto-generated method stub
                 String str = sendArea.getText() ;
                 SimpleDateFormat formater = new SimpleDateFormat("HH:mm:ss") ;
                 String time  = formater.format(new Date() ) ;
-                String sendStr = name+" "+time+" 说: "+str ;
+                String chatContent = name+" "+time+" said: "+str ;
+
+                String sendStrFull="{\"name\":\"Chatting\",\"x1\":0,\"y1\":0,\"x2\":0,\"y2\":0,\"name\":\"Chatting\",\"red\":255,\"green\":255,\"blue\":255,\"text\":\""+ chatContent +"\"}";
+                System.out.println(sendStrFull);
+
+                contentArea.append(chatContent);
+                contentArea.append("\n");
+
+
                 PrintWriter out = null ;
                 try  {
                     out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream() ) ) ;
-                    out.println(sendStr) ;
+                    out.println(sendStrFull) ;
                     out.flush();
                 }catch(Exception e1)  {
                     e1.printStackTrace();
@@ -188,10 +206,14 @@ class ClientThread extends Thread  {
             br = new BufferedReader(new InputStreamReader(socket.getInputStream())) ;
             String str = null ;
             while( (str = br.readLine()) != null)  {
-                System.out.println(str) ;
-                //contentArea.append(str);
-                //contentArea.append("\n");
-                ClientUtils.putShape(str);
+                //System.out.println(str) ;
+                String chatContent = ClientUtils.putShape(str);
+                System.out.println(chatContent);
+                //说明这个是聊天内容
+                if(chatContent!=null){
+                    contentArea.append(chatContent);
+                    contentArea.append("\n");
+                }
             }
         } catch(IOException e)  {
             e.printStackTrace();

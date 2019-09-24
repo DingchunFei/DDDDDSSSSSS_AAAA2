@@ -23,7 +23,9 @@ import java.awt.Graphics;
         @JsonSubTypes.Type(value = Text.class, name = "Text"),
         @JsonSubTypes.Type(value = FillRect.class, name = "FillRect"),
         @JsonSubTypes.Type(value = Oval.class, name = "Circle"),
-        @JsonSubTypes.Type(value = FillOval.class, name = "FillOval")
+        @JsonSubTypes.Type(value = FillOval.class, name = "FillOval"),
+        //正常聊天
+        @JsonSubTypes.Type(value = Chatting.class, name = "Chatting")
 }
 )
 public abstract class Shape {

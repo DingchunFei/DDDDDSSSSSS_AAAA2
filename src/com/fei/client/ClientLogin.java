@@ -40,8 +40,8 @@ public class ClientLogin extends JFrame  {
     }
 
     public void init()  {
-        this.setTitle("DS测试的聊天室");
-        this.setSize(330,230);     //借用成熟美观尺寸
+        this.setTitle("DS Chatting");
+        this.setSize(300,150);     //借用成熟美观尺寸
         int y = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() ;
         int x = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() ;
         /**
@@ -55,27 +55,27 @@ public class ClientLogin extends JFrame  {
 
         JPanel mainPanel = new JPanel() ;
         Border border = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED) ;
-        mainPanel.setBorder(BorderFactory.createTitledBorder(border,"输入登陆信息",TitledBorder.CENTER,TitledBorder.TOP)) ;
+        mainPanel.setBorder(BorderFactory.createTitledBorder(border,"Please input your username",TitledBorder.CENTER,TitledBorder.TOP)) ;
         this.add(mainPanel,BorderLayout.CENTER) ;     //将主面板加入frame
         mainPanel.setLayout(null) ;
-        JLabel namelabel = new JLabel("请输入昵称") ;
+        JLabel namelabel = new JLabel("Username") ;
         namelabel.setBounds(30,30,80,22) ;
         mainPanel.add(namelabel) ;
         nametext = new JTextField() ;
         nametext.setBounds(115,30,120,22);
         mainPanel.add(nametext) ;
-        JLabel passwordlabel = new JLabel("请输入密码") ;
+        /*JLabel passwordlabel = new JLabel("please enter") ;
         passwordlabel.setBounds(30,60,80,22);
         mainPanel.add(passwordlabel) ;
         passwordtetx = new JPasswordField() ;
         passwordtetx.setBounds(115,60,120,22) ;
-        mainPanel.add(passwordtetx) ;
+        mainPanel.add(passwordtetx) ;*/
 
         //接下来按钮位置排放
         JPanel bPanel = new JPanel() ;
         bPanel.setLayout(new FlowLayout(FlowLayout.RIGHT)) ;
         this.add(bPanel,BorderLayout.SOUTH) ;
-        JButton reset = new JButton("重置") ;
+        JButton reset = new JButton("reset") ;
         reset.addActionListener(new ActionListener()  {    //为“重置”按钮添加事件监听
             public void actionPerformed(ActionEvent e)  {
                 nametext.setText("");
@@ -88,7 +88,7 @@ public class ClientLogin extends JFrame  {
          *
          */
 
-        JButton submit = new JButton("登陆") ;
+        JButton submit = new JButton("login") ;
         submit.addActionListener(new LoginAction(this) );  //因为登陆相对复杂，重新为登陆写一个类
         bPanel.add(submit) ;
     }
@@ -115,10 +115,10 @@ public class ClientLogin extends JFrame  {
                 self.dispose();
             }catch(UnknownHostException e1)  {
                 e1.printStackTrace();
-                JOptionPane.showConfirmDialog(self, "找不到指定服务器!~","连接失败",JOptionPane.OK_OPTION,JOptionPane.ERROR_MESSAGE) ;
+                JOptionPane.showConfirmDialog(self, "Can not find the server","Connection fail",JOptionPane.OK_OPTION,JOptionPane.ERROR_MESSAGE) ;
             }catch(IOException e1)  {
                 e1.printStackTrace() ;
-                JOptionPane.showConfirmDialog(self, "连接服务器出错，请重试！","连接失败",JOptionPane.OK_OPTION,JOptionPane.ERROR_MESSAGE) ;
+                JOptionPane.showConfirmDialog(self, "Can not find the server","Connection fail",JOptionPane.OK_OPTION,JOptionPane.ERROR_MESSAGE) ;
             }
         }
     }

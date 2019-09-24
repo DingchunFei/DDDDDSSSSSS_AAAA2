@@ -35,10 +35,21 @@ public class ClientUtils {
         }
     }
 
-    public static void putShape(String jsonStr) {
-        System.out.println("putShape被调用了！");
+    public static String putShape(String jsonStr) {
         //每次只有一个
-        shapes.add(JacksonUtil.json2Shape(jsonStr));
+        Shape shape = JacksonUtil.json2Shape(jsonStr);
+
+        List list = new LinkedList ();
+
+        System.out.println(shape);
+
+        if(shape.name.equals("Chatting")){
+            //说明是聊天内容
+            return shape.text;
+        }else{
+            shapes.add(shape);
+            return null;
+        }
     }
 
     public static Shape getShape() {
