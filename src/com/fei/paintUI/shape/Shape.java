@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+import javax.swing.*;
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -65,7 +66,6 @@ public abstract class Shape {
 
 
     public void drawShape(Graphics g) {
-
     }
 
     @Override

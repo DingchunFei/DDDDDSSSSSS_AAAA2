@@ -14,7 +14,7 @@ public class FillRect extends Shape {
 
     public void drawShape(Graphics g) {
         g.setColor(color);
-        g.fillRect(x1, y1, x2, y2);
+        g.fillRect(Math.min(x1, x2), Math.min(y1, y2), Math.abs(x2 - x1), Math.abs(y2 - y1));
     }
 
 }

@@ -171,8 +171,12 @@ public class PainterUI extends JPanel {
         super.paint(g);     //遍历图形数组，重绘图形
         for (int i = 0; i < shapeParameter.length; i++) {
             Shape shape = shapeParameter[i];
-            if (shapeParameter[i] != null) {
+            if (shape != null) {
                 shape.drawShape(g);
+                System.out.println(i+":"+shape.toString());
+            }
+            else{
+                break;
             }
         }
     }

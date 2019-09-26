@@ -8,6 +8,7 @@ import com.fei.paintUI.util.ClientUtils;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.awt.geom.*;
 
 public class DrawListener implements MouseListener, MouseMotionListener, ActionListener {
 
@@ -98,16 +99,16 @@ public class DrawListener implements MouseListener, MouseMotionListener, ActionL
         }
         if ("FillOval".equals(name)) {
             g.fillOval(Math.min(x1, x2), Math.min(y1, y2), Math.abs(x2 - x1), Math.abs(y2 - y1));
-            Shape oval = new Oval(x1, y1, x2, y2, name, color,null);
-            shapeArray[index++] = oval;
-            ClientUtils.sendMessage(oval);
+            Shape fillOval = new FillOval(x1, y1, x2, y2, name, color,null);
+            shapeArray[index++] = fillOval;
+            ClientUtils.sendMessage(fillOval);
 
             //System.out.println("Oval"+"    "+x1+"    "+ y1+ "    "+ x2+"    "+y2 +"    "+name+"    "+color);
         }
 
         if ("Circle".equals(name)) {
             g.drawOval(x1, y1, Math.max(Math.abs(x2 - x1),Math.abs(y2 - y1)), Math.max(Math.abs(x2 - x1),Math.abs(y2 - y1)));
-            Shape oval = new Oval(x1, y1, Math.max(Math.abs(x2 - x1),Math.abs(y2 - y1)), Math.max(Math.abs(x2 - x1),Math.abs(y2 - y1)), name, color,null);
+            Shape oval = new Oval(x1, y1, x1 + Math.max(Math.abs(x2 - x1),Math.abs(y2 - y1)), y1 + Math.max(Math.abs(x2 - x1),Math.abs(y2 - y1)), name, color,null);
             shapeArray[index++] = oval;
             ClientUtils.sendMessage(oval);
 
