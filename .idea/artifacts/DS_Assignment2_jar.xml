@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DS_Assignment2:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/DS_Assignment2_jar</output-path>
+    <root id="archive" name="DS_Assignment2.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$USER_HOME$/Desktop/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="DS_Assignment2" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jackson-annotations-2.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jackson-core-2.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jackson-databind-2.2.3.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

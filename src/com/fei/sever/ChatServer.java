@@ -18,14 +18,14 @@ import java.util.ArrayList;
 public class ChatServer {
     private List<Socket> sockets = new ArrayList<Socket>() ;    //类集的应用
     public ChatServer() throws IOException  {
-        ServerSocket ss = new ServerSocket(8888) ;
-        System.out.println("Server is listening the port : 8888") ;
+        ServerSocket ss = new ServerSocket(8090) ;
+        System.out.println("Server is listening the port : 8090") ;
 
         while(true)  {
             Socket socket = ss.accept() ;
             sockets.add(socket) ;
             String ip = socket.getInetAddress().getHostAddress() ;
-            System.out.println("新用户进入！ip是"+ip) ;
+            System.out.println("New User coming！ip:"+ip) ;
             Thread thread = new Thread(new ServerRunner(sockets,socket)) ;
             thread.start();
         }

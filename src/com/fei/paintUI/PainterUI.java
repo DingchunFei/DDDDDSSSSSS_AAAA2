@@ -86,14 +86,14 @@ public class PainterUI extends JPanel {
         //创建菜单栏
         JMenuBar menuBar = new JMenuBar();
         jf.setJMenuBar(menuBar);
-        JMenu menu1 = new JMenu("文件");
+        JMenu menu1 = new JMenu("File");
         //JMenu menu2 = new JMenu("退出");
         menuBar.add(menu1);
         //menuBar.add(menu2);
-        JMenuItem item1 = new JMenuItem("打开");
-        JMenuItem item2 = new JMenuItem("另存为");
+        JMenuItem item1 = new JMenuItem("Open");
+        JMenuItem item2 = new JMenuItem("Save As");
         //JMenuItem item3 = new JMenuItem("另存为");
-        JMenuItem item4 = new JMenuItem("退出");
+        JMenuItem item4 = new JMenuItem("Exit");
         menu1.add(item1);
         menu1.add(item2);
         //menu1.add(item3);

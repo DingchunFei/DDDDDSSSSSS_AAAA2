@@ -109,7 +109,8 @@ public class ClientLogin extends JFrame  {
             //System.out.println("用户名是："+nametext.getText()+" 密码是："+new String(passwordtext.getPassword())) ;
             try  {
                 //开始连接到服务器
-                Socket socket = new Socket("127.0.0.1",8888) ;
+                //Socket socket = new Socket("127.0.0.1",8090) ;
+                Socket socket = new Socket("35.189.32.209",8090) ;
                 new ChatClient(socket,nametext.getText()) ;
                 //调用dispose方法关闭登陆框
                 self.dispose();
