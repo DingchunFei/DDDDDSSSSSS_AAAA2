@@ -106,7 +106,7 @@ public class ClientLogin extends JFrame  {
         }
 
         public void actionPerformed(ActionEvent e)  {
-            //System.out.println("用户名是："+nametext.getText()+" 密码是："+new String(passwordtext.getPassword())) ;
+            //System.out.println("Username："+nametext.getText()+" Password："+new String(passwordtext.getPassword())) ;
             try  {
                 //开始连接到服务器
                 //Socket socket = new Socket("127.0.0.1",8090) ;
